@@ -11,19 +11,24 @@ config = {
     // When running Ghost in the wild, use the production environment.
     // Configure your URL and mail settings here
     production: {
-        url: 'http://my-ghost-blog.com',
+        url: 'http://iadf.herokuapp.com',
+        fileStorage: false,
         mail: {},
         database: {
-            client: 'sqlite3',
+            client: 'postgres',
             connection: {
-                filename: path.join(__dirname, '/content/data/ghost.db')
-            },
+               host: process.env.ec2-54-235-240-92.compute-1.amazonaws.com,
+               user: process.env.egzyukaxnzaveu,
+               password: process.env.b5bbc2e94611edab55a6a81b6359716d41d328b3ee06d6c94d48d7f9369a69a9,
+               database: process.env.du3i00i1k612,
+               port: '5432'
+             },
             debug: false
         },
 
         server: {
-            host: '127.0.0.1',
-            port: '2368'
+            host: '0.0.0.0',
+            port: process.env.PORT
         }
     },
 
